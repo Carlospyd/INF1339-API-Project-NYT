@@ -1,2 +1,2 @@
-# INF1339-week03-Projecte2
+# INF1339-API-Project
 Repository for INF1339 Project 2
