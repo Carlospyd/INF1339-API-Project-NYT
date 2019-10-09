@@ -1,12 +1,12 @@
 <html>
     <head>
         <style>
-            .test_class{font-style: italic;}
+            .output {color: chartreuse;}
         </style>
     
         <script>
-            function display(string) {
-                document.getElementById("sentinel").innerHTML= 'HELLO'}
+            function hello() {
+                document.getElementById("test_output").innerHTML= 'HELLO'}
         </script>
     
         <title>Yingdong INF1339 Project 2</title>
@@ -14,7 +14,7 @@
 
     <body>
       <h3>API Project Iteration 0</h3>
-        <button type="button" onclick="display(1)">Click</button>
-        <p id= "sentinel" class= "test_class">???</p>
+        <button type="button" onclick="hello()">Click</button>
+        <p id= "test_output" class= "output"></p>
     </body>
 </html>
