@@ -1,48 +1,30 @@
-<html>
+ <html>
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script> 
+        <style>
+            .output {color: chartreuse;}
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
         <script>
-            function getAPIkey_go() {
-                var APIkey = document.getElementById("myAPIkey").value
-                //document.getElementById("output_text").innerHTML = 'tBmzonQ2i5ZW6n8qcmxsP4oGxeVHljQV'
-                var url = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=rainbow&begin_data=20190901&end_date=20190930&apikey='+APIkey
-                
+            
+            var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=rainbow&api-key=tBmzonQ2i5ZW6n8qcmxsP4oGxeVHljQV";
+            var articleCount = 0
+            
+            function setup() {
+              noCanvas();
+              loadJSON(url, gotData);
             }
             
-            function myNYTapp(){
-                var APIkey = 'tBmzonQ2i5ZW6n8qcmxsP4oGxeVHljQV'
-            }
-            
-            function setup(){
-                noCanvas()
-                loadJSON(url, gotData)
-            }
-            function gotData(data){
-                sample_data = data.response.docs[0].headline.main
-                document.getElementById('output_text').innerHTML = sample_data
-                document.getElementById('article_count').innerHTML = data.response.docs.length
-                display_headline(sample_data)
-                sample_data = data.response.docs[1].headline.main
-                display_headline(sample_data)
-                window.alert('that is all, folks')
-            }
-            
-            function display_headline(headline_text){
-                var headline = document.createElement('h3')
-                headline.innerHTML = headline_text
-                document.body.insertBefore(headline, document.getElementById('output_text'))
-            }
-            
-            function draw(){
-                
-            }
-        </script>
+            function gotData(data) {
+                alert("FUNCTION GOT DATA ACTIVATED")
+                document.getElementById("test_output").innerHTML = 
+                    data.response.docs[0].headline.main
+               }
+           </script>
     </head>
     <body>
-        <h3>Get user input</h3>
-        <input type = "text" id = "myAPIkey" value= 'your API key'>
-        <button type = "button" onclick="getAPIkey_go()">Get API key & Go</button>
-        <p id = "output_text"></p>
-        <p>Article count = <span id = 'article_count'></span></p>
+        <h1>New York Times API: Articles from all time about rainbows</h1>
+        <p id="test_output" class="output"></p>
+
     </body>
 </html>
